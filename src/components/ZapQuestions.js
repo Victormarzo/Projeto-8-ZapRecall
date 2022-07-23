@@ -1,5 +1,5 @@
 import React from "react"
-export default function ZapQuestions(){
+export default function ZapQuestions({setResultList,resultList}){
 
     const deck=[
         {
@@ -36,13 +36,24 @@ export default function ZapQuestions(){
         }
     ]
 
-    function Flashcard({question,answer}){
+    function comparador() {
+        return Math.random() - 0.5;
+    }
+    deck.sort(comparador);
+
+    function answerRegister(answerStatus){
+        setResultList([...resultList,answerStatus]);
+        
+
+    }
+
+    function Flashcard({question,answer,index}){
         const [turnCard,setTurnCard]=React.useState("true");
         const [turnQuestion,setTurnQuestion]=React.useState("true");
         return(
             <>{turnQuestion?(
                 <div class="question">
-                    <p>Pergunta 1</p>
+                    <p>Pergunta {index+1}</p>
                     <img onClick={() => setTurnQuestion(!turnQuestion)} 
                     src="./assets/img/play.svg"/>
                 </div>
@@ -56,9 +67,25 @@ export default function ZapQuestions(){
                 <div class='questionAnswers questionInside'>
                     <span class="textQuestion">{answer}</span>
                     <div class="options">   
-                        <div class="answer red">Não lembrei</div>
-                        <div class="answer orange">Quase não lembrei</div>
-                        <div class="answer green">Zap!</div>
+                        <div 
+                        onClick={() => {
+                            answerRegister(<img src="./assets/img/wrong.svg" />)
+                            setTurnQuestion(!turnQuestion)
+                            console.log(resultList)
+                        }}
+                        class="answer red">Não lembrei</div>
+                        <div onClick={() => {
+                            answerRegister(<img src="./assets/img/question.svg" />)
+                            setTurnQuestion(!turnQuestion)
+                            console.log(resultList)
+                        }} 
+                        class="answer orange">Quase não lembrei</div>
+                        <div onClick={() => {
+                            answerRegister(<img src="./assets/img/right.svg" />)
+                            setTurnQuestion(!turnQuestion)
+                            console.log(resultList)
+                        }} 
+                        class="answer green">Zap!</div>
                     </div>
                 </div>
                  ))
@@ -70,9 +97,10 @@ export default function ZapQuestions(){
     return(
     
      <div class="deck">
-     {deck.map(card=><Flashcard 
+     {deck.map((card,index)=><Flashcard 
      question={card.question}
      answer={card.answer}
+     index={index}
      />
      )}
      </div>
