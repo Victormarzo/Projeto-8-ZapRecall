@@ -1,22 +1,30 @@
+import round from "../components/img/round.svg"
+import right from "../components/img/right.svg"
+import wrong from "../components/img/wrong.svg"
+import maybe from "../components/img/maybe.svg"
+import play from "../components/img/play.svg"
+
+
 import React from "react";
-export default function Flashcard({question,answer,index,setResultList,resultList}){
+export default function Flashcard({question,answer,index,setResultList,resultList,setError}){
         const [turnCard,setTurnCard]=React.useState("true");
         const [turnQuestion,setTurnQuestion]=React.useState("true");
         const [turnAnswer,setTurnAnswer]=React.useState("true");
         const [style,setStyle]=React.useState("");
+        
         return(
             
             <>{turnQuestion?(
-                <div class="question">
+                <div onClick={() => setTurnQuestion(!turnQuestion)} class="question">
                     <p>Pergunta {index+1}</p>
-                    <img onClick={() => setTurnQuestion(!turnQuestion)} 
-                    src="./assets/img/play.svg"/>
+                    <img 
+                    src={play}/>
                 </div>
             ):(turnCard? (
                 <div class="questionInside">
                     <div>
                         <p class="textQuestion">{question}</p>
-                        <img onClick={() => setTurnCard(!turnCard)} src="./assets/img/round.svg"/>
+                        <img onClick={() => setTurnCard(!turnCard)} src={round}/>
                     </div>
                 </div>):(turnAnswer? (
                 <div class='questionAnswers questionInside'>
@@ -27,7 +35,8 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                             
                             setTurnAnswer(!turnAnswer);
                             setStyle("redg");
-                            setResultList([...resultList,<img src="./assets/img/wrong.svg" />])
+                            setResultList([...resultList,<img src={wrong} />])
+                            setError(1);
                             
                         }}
                         class="answer red">Não lembrei</div>
@@ -35,7 +44,7 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                             
                             setTurnAnswer(!turnAnswer);
                             setStyle("orangeg");
-                            setResultList([...resultList,<img src="./assets/img/question.svg" />])
+                            setResultList([...resultList,<img src={maybe} />])
                             
                            
                         }} 
@@ -44,7 +53,7 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                         
                             setTurnAnswer(!turnAnswer);
                             setStyle("greeng");
-                            setResultList([...resultList,<img src="./assets/img/right.svg" />])
+                            setResultList([...resultList,<img src={right}/>])
                             
                         }} 
                         class="answer green">Zap!</div>
@@ -53,7 +62,7 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                  ):(<div class="question">
                  <p class={style }>Pergunta {index+1}</p>
                  <img 
-                 src="./assets/img/play.svg"/>
+                 src={play}/>
              </div>)))
 
             }

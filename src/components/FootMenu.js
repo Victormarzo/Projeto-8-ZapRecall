@@ -1,10 +1,38 @@
 import React from "react"
-export default function FootMenu({resultList,deck,}){
+export default function FootMenu({resultList,deck,error}){
+   let result;
    
+    function acabo (){
+    if(resultList.length===deck.length){
+        if(error===1){
+            result=
+            <>
+            <p>
+                😢 <strong>Putz...</strong>
+            </p>
+            <p>
+                Ainda faltam alguns...<br/>Mas não desanime!
+            </p>
+            </>
+        }else{
+            result=
+            <>
+            <p>
+                🥳 <strong>Parabéns!!!</strong>
+            </p>
+            <p>
+                Você não esqueceu de nenhum flashcard!
+            </p>
+            </>
+        }
+        
+    }
+   }
+   acabo();
     return(
     <div class="footMenu">
-        
-        <span>{resultList.length}/{deck.length} CONCLUÍDOS</span>
+        {result}
+        <p>{resultList.length}/{deck.length} CONCLUÍDOS</p>
         <div class="answers">
             {resultList}
         </div>
