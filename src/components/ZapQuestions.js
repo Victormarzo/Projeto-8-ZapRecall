@@ -47,11 +47,12 @@ export default function ZapQuestions(){
    
     return(
     <>
-     <div class="deck">
+     <div className="deck">
      {deck.map((card,index)=><Flashcard 
      question={card.question}
      answer={card.answer}
      index={index}
+     key={index}
      setResultList={setResultList}
      resultList={resultList}
      setError={setError}

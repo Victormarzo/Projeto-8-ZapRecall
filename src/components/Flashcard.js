@@ -15,21 +15,21 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
         return(
             
             <>{turnQuestion?(
-                <div onClick={() => setTurnQuestion(!turnQuestion)} class="question">
+                <div onClick={() => setTurnQuestion(!turnQuestion)} className="question">
                     <p>Pergunta {index+1}</p>
                     <img 
                     src={play}/>
                 </div>
             ):(turnCard? (
-                <div class="questionInside">
+                <div className="questionInside">
                     <div>
-                        <p class="textQuestion">{question}</p>
+                        <p className="textQuestion">{question}</p>
                         <img onClick={() => setTurnCard(!turnCard)} src={round}/>
                     </div>
                 </div>):(turnAnswer? (
-                <div class='questionAnswers questionInside'>
-                    <span class="textQuestion">{answer}</span>
-                    <div class="options">   
+                <div className='questionAnswers questionInside'>
+                    <span className="textQuestion">{answer}</span>
+                    <div className="options">   
                         <div 
                         onClick={() => {
                             
@@ -39,7 +39,7 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                             setError(1);
                             
                         }}
-                        class="answer red">Não lembrei</div>
+                        className="answer red">Não lembrei</div>
                         <div onClick={() => {
                             
                             setTurnAnswer(!turnAnswer);
@@ -48,7 +48,7 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                             
                            
                         }} 
-                        class="answer orange">Quase não lembrei</div>
+                        className="answer orange">Quase não lembrei</div>
                         <div onClick={() => {
                         
                             setTurnAnswer(!turnAnswer);
@@ -56,11 +56,11 @@ export default function Flashcard({question,answer,index,setResultList,resultLis
                             setResultList([...resultList,<img src={right}/>])
                             
                         }} 
-                        class="answer green">Zap!</div>
+                        className="answer green">Zap!</div>
                     </div>
                 </div>
-                 ):(<div class="question">
-                 <p class={style }>Pergunta {index+1}</p>
+                 ):(<div className="question">
+                 <p className={style }>Pergunta {index+1}</p>
                  <img 
                  src={play}/>
              </div>)))

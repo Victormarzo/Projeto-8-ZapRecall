@@ -30,10 +30,10 @@ export default function FootMenu({resultList,deck,error}){
    }
    acabo();
     return(
-    <div class="footMenu">
+    <div className="footMenu">
         {result}
         <p>{resultList.length}/{deck.length} CONCLUÍDOS</p>
-        <div class="answers">
+        <div className="answers">
             {resultList}
         </div>
         

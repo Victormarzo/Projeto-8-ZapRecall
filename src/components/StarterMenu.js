@@ -2,11 +2,11 @@ import React from "react";
 import logo from "../components/img/logo.svg"
 export default function StarterMenu({screen,setScreen}){
     return(
-        <div class="starterMenu">
+        <div className="starterMenu">
             <img src={logo}/>
-            <p class="logo">ZapRecall</p>
+            <p className="logo">ZapRecall</p>
             <div onClick={() => setScreen(!screen)}
-            class="startButton">Iniciar Recall!</div>
+            className="startButton">Iniciar Recall!</div>
         </div>
     )
 }
