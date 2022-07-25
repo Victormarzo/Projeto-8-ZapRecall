@@ -118,7 +118,18 @@ body{
   right:15px;
   
 }
-
+.greeng{
+  text-decoration-line: line-through;
+  color: #2FBE34;
+}
+.redg{
+  text-decoration-line: line-through;
+  color: #FF3030;
+}
+.orangeg{
+  text-decoration-line: line-through;
+  color: #FF922E;
+}
 .options{
   display: flex;
   justify-content: space-around;
