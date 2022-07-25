@@ -40,11 +40,14 @@ export default function ZapQuestions(){
     function comparador() {
         return Math.random() - 0.5;
     }
+    function shuffle(){
+    if (resultList.length==0){
+        deck.sort(comparador);
+    }}
     
-    deck.sort(comparador);
     const[resultList,setResultList]=React.useState([]);
     const[error,setError]=React.useState('');
-   
+    shuffle();
     return(
     <>
      <div className="deck">
